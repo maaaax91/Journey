@@ -529,38 +529,6 @@ function drawSpree(el){
     +'<rect x="244" y="218" width="5" height="7" rx="2" fill="#3a6a10"/>'
     +'<rect x="255" y="224" width="9" height="22" rx="4" fill="#4a7a18"/>'
     +'<rect x="257" y="220" width="5" height="7" rx="2" fill="#3a6a10"/>'
-    // Fahrrad links (Susi) - vorne auf der Wiese
-    +'<g transform="translate(18,218) scale(0.62)">'
-    +'<circle cx="30" cy="50" r="22" fill="none" stroke="#c0282a" stroke-width="3"/>'
-    +'<circle cx="90" cy="50" r="22" fill="none" stroke="#c0282a" stroke-width="3"/>'
-    +'<circle cx="30" cy="50" r="4" fill="#c0282a"/>'
-    +'<circle cx="90" cy="50" r="4" fill="#c0282a"/>'
-    +'<line x1="30" y1="50" x2="60" y2="25" stroke="#c0282a" stroke-width="3"/>'
-    +'<line x1="60" y1="25" x2="90" y2="50" stroke="#c0282a" stroke-width="3"/>'
-    +'<line x1="60" y1="25" x2="60" y2="50" stroke="#c0282a" stroke-width="3"/>'
-    +'<line x1="30" y1="50" x2="60" y2="50" stroke="#c0282a" stroke-width="3"/>'
-    +'<line x1="60" y1="50" x2="90" y2="50" stroke="#c0282a" stroke-width="3"/>'
-    +'<line x1="60" y1="25" x2="55" y2="10" stroke="#c0282a" stroke-width="3"/>'
-    +'<line x1="55" y1="10" x2="70" y2="10" stroke="#c0282a" stroke-width="4" stroke-linecap="round"/>'
-    +'<line x1="60" y1="25" x2="45" y2="22" stroke="#c0282a" stroke-width="3"/>'
-    +'<line x1="45" y1="22" x2="40" y2="14" stroke="#c0282a" stroke-width="3" stroke-linecap="round"/>'
-    +'</g>'
-    // Fahrrad rechts (Max) - vorne auf der Wiese
-    +'<g transform="translate(278,218) scale(0.62)">'
-    +'<circle cx="30" cy="50" r="22" fill="none" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<circle cx="90" cy="50" r="22" fill="none" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<circle cx="30" cy="50" r="4" fill="#3a5a9a"/>'
-    +'<circle cx="90" cy="50" r="4" fill="#3a5a9a"/>'
-    +'<line x1="30" y1="50" x2="60" y2="25" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<line x1="60" y1="25" x2="90" y2="50" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<line x1="60" y1="25" x2="60" y2="50" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<line x1="30" y1="50" x2="60" y2="50" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<line x1="60" y1="50" x2="90" y2="50" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<line x1="60" y1="25" x2="55" y2="10" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<line x1="55" y1="10" x2="70" y2="10" stroke="#3a5a9a" stroke-width="4" stroke-linecap="round"/>'
-    +'<line x1="60" y1="25" x2="45" y2="22" stroke="#3a5a9a" stroke-width="3"/>'
-    +'<line x1="45" y1="22" x2="40" y2="14" stroke="#3a5a9a" stroke-width="3" stroke-linecap="round"/>'
-    +'</g>'
     +susiSVG(108,158,.88)+maxSVG(148,158,.88)
     +'<path d="M60,80 Q67,74 74,80" stroke="#1a2a1a" stroke-width="1.8" fill="none"/>'
     +'<path d="M290,60 Q297,54 304,60" stroke="#1a2a1a" stroke-width="1.8" fill="none"/>'
@@ -777,8 +745,8 @@ function drawTischtennis(el){
       }
       var sp3=Math.sqrt(ball.vx*ball.vx+ball.vy*ball.vy);
       if(sp3>7){ball.vx=ball.vx/sp3*7;ball.vy=ball.vy/sp3*7;}
-      if(flashText==='💛 Punkt fuer Susi!')flashText='💛 Punkt für Susi!';
-      if(flashText==='💙 Punkt fuer Max!')flashText='💙 Punkt für Max!';
+      if(ball.x<0){scoreSusi++;flashText='💛 Punkt fuer Susi!';flashAlpha=1.5;resetBall(1);}
+      if(ball.x>W){scoreMax++;flashText='💙 Punkt fuer Max!';flashAlpha=1.5;resetBall(-1);}
       if(flashAlpha>0)flashAlpha-=.02;
     }
     function draw(){
