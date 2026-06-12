@@ -745,8 +745,8 @@ function drawTischtennis(el){
       }
       var sp3=Math.sqrt(ball.vx*ball.vx+ball.vy*ball.vy);
       if(sp3>7){ball.vx=ball.vx/sp3*7;ball.vy=ball.vy/sp3*7;}
-      if(ball.x<0){scoreSusi++;flashText='💛 Punkt fuer Susi!';flashAlpha=1.5;resetBall(1);}
-      if(ball.x>W){scoreMax++;flashText='💙 Punkt fuer Max!';flashAlpha=1.5;resetBall(-1);}
+      if(flashText==='💛 Punkt fuer Susi!')flashText='💛 Punkt für Susi!';
+      if(flashText==='💙 Punkt fuer Max!')flashText='💙 Punkt für Max!';
       if(flashAlpha>0)flashAlpha-=.02;
     }
     function draw(){
@@ -779,7 +779,7 @@ function drawNaechstesKapitel(el){
   }
   el.innerHTML=starHtml
     +'<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;z-index:2;">'
-    +'<div style="font-family:Georgia,serif;font-style:italic;color:#f5d77e;font-size:clamp(.9rem,2.5vw,1.2rem);text-align:center;margin-bottom:20px;text-shadow:0 0 20px #f5d77e66;">Was soll unser n\u00e4chstes Kapitel sein?</div>'
+    +'<div style="font-family:Georgia,serif;font-style:italic;color:#f5d77e;font-size:clamp(.9rem,2.5vw,1.2rem);text-align:center;margin-bottom:20px;text-shadow:0 0 20px #f5d77e66;">Was soll unser nächstes Kapitel sein?</div>'
     +'<textarea id="nextChapInput" placeholder="Schreib es hier..." style="'
       +'width:90%;max-width:320px;height:70px;background:rgba(255,255,255,0.06);'
       +'border:1px solid #f5d77e55;border-radius:10px;color:#f5e6c8;'
@@ -813,8 +813,8 @@ function drawNaechstesKapitel(el){
       inp.style.display='none';
       btn.style.display='none';
       result.style.display='block';
-      var subject=encodeURIComponent('Unser n\u00e4chstes Kapitel \uD83D\uDC9B');
-      var body=encodeURIComponent('Lieber Max,\n\nunser n\u00e4chstes Kapitel soll sein:\n\n\u201E'+val+'\u201C\n\n\u2014 Susi');
+      var subject=encodeURIComponent('Unser nächstes Kapitel 💛');
+      var body=encodeURIComponent('Lieber Max,\n\nunser nächstes Kapitel soll sein:\n\n\u201E'+val+'\u201C\n\n\u2014 Susi');
       var href='mailto:maximilianrettig@gmx.net?subject='+subject+'&body='+body;
       var mailBtn=el.querySelector('#mailLink');
       mailBtn.onclick=function(){window.open(href,'_blank');return false;};
@@ -856,19 +856,19 @@ var chapters=[
   {num:'Kapitel 1',title:'Joyclub',bg:'bg-digital',text:'Manchmal beginnt etwas Besonderes mit einer einzigen Nachricht.',hint:'',draw:drawJoyclub},
   {num:'Kapitel 2',title:'WhatsApp',bg:'bg-digital',text:'Aus einer Nachricht wurden viele.\nAus vielen Nachrichten entstand Verbundenheit.',hint:'',draw:drawWhatsapp},
   {num:'Kapitel 3',title:'Naturkundemuseum',bg:'bg-warm',text:'Das erste Treffen.\nZwischen Fossilien, Staunen und Aufregung.',hint:'Klicke auf den Dino!',draw:drawMuseum},
-  {num:'Kapitel 4',title:'Berliner Fernsehturm',bg:'bg-autumn',text:'Unter dem Berliner Fernsehturm geschah etwas, das beide nie vergessen wuerden.',hint:'Klicke auf die beiden',draw:drawFernsehturm},
-  {num:'Kapitel 5',title:'Winter in Berlin',bg:'bg-winter',text:'Manchmal genuegt eine Hand in der eigenen, damit sich die ganze Stadt waermer anfuehlt.',hint:'',draw:drawWinter},
-  {num:'Kapitel 6',title:'Luebben',bg:'bg-warm',text:'Aus Nachrichten wurden gemeinsame Abende.\nAus Naehe wurde Vertrauen.',hint:'Klicke auf die Katze!',draw:drawLuebben},
-  {num:'Kapitel 7',title:'Zwei Mauern fallen',bg:'bg-night',text:'Zwei Menschen lassen ihre Mauern fuer einen Moment fallen.',hint:'Klicke auf die Mauern!',draw:drawMauern},
-  {num:'Kapitel 8',title:'Planetarium Berlin',bg:'bg-night',text:'Unter einem kuenstlichen Sternenhimmel fuehlte sich das Universum ploetzlich sehr klein an.\nNur sie beide, in der Dunkelheit, Schulter an Schulter.',hint:'',draw:drawPlanetarium},
-  {num:'Kapitel 9',title:'Sommer an der Spree',bg:'bg-summer',text:'Die schoensten Momente sind oft die einfachen.',hint:'',draw:drawSpree},
-  {num:'Kapitel 10',title:'Ostkreuz',bg:'bg-digital',text:'Zwischen Ankommen und Weiterfahren entstand ein Gefuehl von Zuhause.',hint:'',draw:drawOstkreuz},
-  {num:'Kapitel 11',title:'Bier und Decke',bg:'bg-nature',text:'Kein grosser Plan. Kein besonderes Ereignis.\nNur zwei Menschen, die den Moment geniessen.',hint:'',draw:drawPicknick},
-  {num:'Kapitel 12',title:'Moritzburg und Wildgehege',bg:'bg-nature',text:'Abenteuer muessen nicht gross sein.\nManchmal reicht ein gemeinsamer Ausflug.',hint:'Klicke auf die Tiere!',draw:drawMoritzburg},
-  {num:'Kapitel 13',title:'Geschenke und Briefe',bg:'bg-warm',text:'Manche Geschenke werden ausgepackt.\nAndere bleiben fuer immer im Herzen.',hint:'Klicke auf die Briefe!',draw:drawBriefe},
-  {num:'Kapitel 14',title:'Tischtennis',bg:'bg-warm',text:'Nicht jeder Ballwechsel ist perfekt.\nAber gemeinsam macht es mehr Spass.',hint:'Bewege die Maus um Susi zu steuern!',draw:drawTischtennis},
-  {num:'Finale',title:'Das offene Ende',bg:'bg-final',text:'Die schoensten Geschichten enden nicht immer mit einem Punkt.\n\nManchmal stehen zwei Menschen einfach da und fragen sich, welches Kapitel als Naechstes geschrieben wird.\n\n— Fortsetzung folgt …',hint:'',draw:drawFinale},
-  {num:'',title:'Unser n\u00e4chstes Kapitel',bg:'bg-night',text:'',hint:'',draw:drawNaechstesKapitel}
+  {num:'Kapitel 4',title:'Berliner Fernsehturm',bg:'bg-autumn',text:'Unter dem Berliner Fernsehturm geschah etwas, das beide nie vergessen würden.',hint:'Klicke auf die beiden',draw:drawFernsehturm},
+  {num:'Kapitel 5',title:'Winter in Berlin',bg:'bg-winter',text:'Manchmal genügt eine Hand in der eigenen, damit sich die ganze Stadt wärmer anfühlt.',hint:'',draw:drawWinter},
+  {num:'Kapitel 6',title:'Lübben',bg:'bg-warm',text:'Aus Nachrichten wurden gemeinsame Abende.\nAus Nähe wurde Vertrauen.',hint:'Klicke auf die Katze!',draw:drawLuebben},
+  {num:'Kapitel 7',title:'Zwei Mauern fallen',bg:'bg-night',text:'Zwei Menschen lassen ihre Mauern für einen Moment fallen.',hint:'Klicke auf die Mauern!',draw:drawMauern},
+  {num:'Kapitel 8',title:'Planetarium Berlin',bg:'bg-night',text:'Unter einem künstlichen Sternenhimmel fühlte sich das Universum plötzlich sehr klein an.\nNur sie beide, in der Dunkelheit, Schulter an Schulter.',hint:'',draw:drawPlanetarium},
+  {num:'Kapitel 9',title:'Sommer an der Spree',bg:'bg-summer',text:'Die schönsten Momente sind oft die einfachen.',hint:'',draw:drawSpree},
+  {num:'Kapitel 10',title:'Ostkreuz',bg:'bg-digital',text:'Zwischen Ankommen und Weiterfahren entstand ein Gefühl von Zuhause.',hint:'',draw:drawOstkreuz},
+  {num:'Kapitel 11',title:'Bier und Decke',bg:'bg-nature',text:'Kein großer Plan. Kein besonderes Ereignis.\nNur zwei Menschen, die den Moment genießen.',hint:'',draw:drawPicknick},
+  {num:'Kapitel 12',title:'Moritzburg und Wildgehege',bg:'bg-nature',text:'Abenteuer müssen nicht groß sein.\nManchmal reicht ein gemeinsamer Ausflug.',hint:'Klicke auf die Tiere!',draw:drawMoritzburg},
+  {num:'Kapitel 13',title:'Geschenke und Briefe',bg:'bg-warm',text:'Manche Geschenke werden ausgepackt.\nAndere bleiben für immer im Herzen.',hint:'Klicke auf die Briefe!',draw:drawBriefe},
+  {num:'Kapitel 14',title:'Tischtennis',bg:'bg-warm',text:'Nicht jeder Ballwechsel ist perfekt.\nAber gemeinsam macht es mehr Spaß.',hint:'Bewege die Maus um Susi zu steuern!',draw:drawTischtennis},
+  {num:'Finale',title:'Das offene Ende',bg:'bg-final',text:'Die schönsten Geschichten enden nicht immer mit einem Punkt.\n\nManchmal stehen zwei Menschen einfach da und fragen sich, welches Kapitel als Nächstes geschrieben wird.\n\n— Fortsetzung folgt …',hint:'',draw:drawFinale},
+  {num:'',title:'Unser nächstes Kapitel',bg:'bg-night',text:'',hint:'',draw:drawNaechstesKapitel}
 ];
 
 // ── navigation ────────────────────────────────────────────────────
